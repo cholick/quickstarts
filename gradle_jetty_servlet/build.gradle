@@ -1,0 +1,14 @@
+apply plugin: 'groovy'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '2.0.5'
+
+    providedCompile 'javax.servlet:servlet-api:2.5'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+}
