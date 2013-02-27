@@ -1,0 +1,50 @@
+apply plugin: 'groovy'
+apply plugin: 'jetty'
+
+repositories {
+    mavenCentral()
+}
+
+def seleniumVersion = "2.21.0"
+
+dependencies {
+    groovy group: 'org.codehaus.groovy', name: 'groovy', version: '1.8.7'
+
+    providedCompile 'javax.servlet:servlet-api:2.5'
+
+    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+    testCompile 'org.codehaus.geb:geb-spock:0.7.2'
+
+//    testCompile("org.seleniumhq.selenium:selenium-htmlunit-driver:$seleniumVersion")
+    testCompile("org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion")
+//    testCompile("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion")
+}
+
+httpPort = 9450
+stopPort = 9451
+stopKey = 'stopKey'
+
+test {
+    exclude '**/*Jasmine*.*'
+}
+
+task jasmine(type: Test, depends: test) {
+    systemProperties "geb.build.reportsDir": "$reporting.baseDir/geb"
+    systemProperties "webdriver.chrome.driver": "/Applications/chromedriver"
+
+    include '**/*Jasmine*.*'
+
+    doFirst {
+        jettyRun.daemon = true
+        jettyRun.execute()
+    }
+    doLast {
+        jettyStop.execute()
+    }
+}
+
+task libs(type: Copy) {
+    description = 'Create a director w/ all compile deps. For use with ide - include this folder as ide dependency'
+    into('lib')
+    from(configurations.compile, configurations.testCompile)
+}
