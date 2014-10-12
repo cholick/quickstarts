@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+// Gradle won't actually run the tests, this is basically a demo-only setup that tosses junit
+// into compile and allows developing and testing in a single class, where the IDE runs tests
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'junit:junit:4.11'
+}
