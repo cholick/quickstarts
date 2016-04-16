@@ -3,3 +3,4 @@ jdk:
   - oraclejdk8
 env:
   - TEST_DIR=java_junit
+
