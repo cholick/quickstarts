@@ -1,0 +1,20 @@
+apply plugin: "java"
+apply plugin: "groovy"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "org.codehaus.groovy:groovy-all:2.4.1"
+    // needed for mocking non-interfaces
+    testCompile("cglib:cglib-nodep:3.2.2")
+    testCompile("org.spockframework:spock-core:1.0-groovy-2.4")
+}
+
+//needed on some older jvms, see https://issues.apache.org/jira/browse/GROOVY-6951
+//test {
+//    jvmArgs "-noverify"
+//}

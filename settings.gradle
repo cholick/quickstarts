@@ -1,1 +1,2 @@
 include 'java_main_junit'
+include 'java_main_spock'
