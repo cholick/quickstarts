@@ -2,6 +2,12 @@ package com.cholick.example;
 
 public class Main {
 
+    private Collaborator collaborator;
+
+    public Main(Collaborator collaborator) {
+        this.collaborator = collaborator;
+    }
+
     public String foo() {
         return "foo";
     }
@@ -12,5 +18,9 @@ public class Main {
 
     public void throwsException() {
         throw new RuntimeException("");
+    }
+
+    public void doCollaboration() {
+        this.collaborator.collaborate();
     }
 }
