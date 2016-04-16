@@ -1,3 +1,8 @@
 ### Scaffolding
 
-A small collection of very simple build configurations. The motivation behid this repository is that it's easy to forget how to setup things from scratch, as that's something that seldom happens. These snippets are to get things going quickly for a demo or scratchpad.
+A small collection of simple build configurations. The motivation behind
+this repository is to get a working JVM build going immediately
+for a demo or scratchpad.
+
+All builds use Gradle and include the wrapper, so the only
+dependency is Java 8.
