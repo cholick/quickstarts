@@ -1,2 +1,3 @@
-include 'java_main_junit'
-include 'java_main_spock'
+//include 'java_api'
+//include 'java_main_junit'
+//include 'java_main_spock'
